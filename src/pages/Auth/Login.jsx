@@ -5,6 +5,7 @@ import { useAuth } from '../../hooks/useAuth';
 import { loginSchema } from '../../utils/validators';
 import FormInput from '../../components/FormInput';
 import { toast } from 'react-toastify';
+import 'remixicon/fonts/remixicon.css';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -29,8 +30,14 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary-500 to-primary-700 flex items-center justify-center p-4">
-      <div className="max-w-md w-full bg-white rounded-lg shadow-2xl p-8">
+    <div className="h-[100vh] w-[100vw] flex flex-row items-center justify-center">
+      <div className='h-full bg-pink-500 w-[40vw] shadow-r-lg relative'>
+        <div className='h-40 w-40 bg-pink-500 rounded-full relative top-1/2 ml-[90%] -translate-y-1/2 flex items-center justify-center'>
+          <i className="ri-arrow-right-s-line text-white text-[150px]" /> 
+        </div>
+        <div><p className='text-white text-[64px] font-bold'>Entrar</p> </div>
+      </div>
+      <div className="h-full bg-white w-[60vw] px-32">
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold text-gray-800 mb-2">
             Sistema de Agendamento
