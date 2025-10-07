@@ -41,13 +41,22 @@ export default function PasswordValidator({
     },
   ];
 
+  const ProgressBar = ({ isValid }: { isValid: boolean }) => (
+    <div
+      style={{
+        transition: 'background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1)',
+        backgroundColor: isValid ? '#22c55e' : '#d1d5db',
+      }}
+      className="flex-1 h-1.5 rounded-full"
+    />
+  );
+
   return (
     <div className="space-y-2">
       <div className="flex flex-row items-center gap-2 w-full">
-        <div className="flex-1 h-1.5 bg-gray-300 rounded-full" />
-        <div className="flex-1 h-1.5 bg-green-500 rounded-full" />
-        <div className="flex-1 h-1.5 bg-green-500 rounded-full" />
-        <div className="flex-1 h-1.5 bg-green-500 rounded-full" />
+        {validationRules.map((rule, index) => (
+          <ProgressBar key={index} isValid={rule.isValid} />
+        ))}
       </div>
       {validationRules.map((rule, index) => (
         <div key={index} className="flex items-center gap-2 text-sm">
