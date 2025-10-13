@@ -34,32 +34,33 @@ const Login = () => {
     <div className="min-h-screen w-full flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-pink-500 via-pink-600 to-rose-600">
       {/* Decorative circles */}
       <div className="absolute top-[-10%] left-[-5%] w-96 h-96 bg-pink-400/30 rounded-full blur-3xl animate-pulse" />
-      <div className="absolute bottom-[-10%] right-[-5%] w-[500px] h-[500px] bg-rose-400/30 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+      <div
+        className="absolute bottom-[-10%] right-[-5%] w-[500px] h-[500px] bg-rose-400/30 rounded-full blur-3xl animate-pulse"
+        style={{ animationDelay: '1s' }}
+      />
       <div className="absolute top-[20%] right-[10%] w-64 h-64 bg-pink-300/20 rounded-full blur-2xl" />
-      
+
       {/* Main card container with animation */}
       <div className="relative z-10 w-full max-w-5xl mx-4 bg-white rounded-2xl shadow-2xl overflow-hidden flex min-h-[600px] animate-fadeIn">
-        
         {/* Left side - Pink panel (LOGIN) */}
         <div className="w-2/5 bg-gradient-to-br from-pink-500 to-rose-500 p-12 flex flex-col justify-center relative overflow-hidden transition-all duration-700 ease-in-out animate-slideInFromLeft">
           <div className="absolute top-0 left-0 w-full h-full opacity-10">
             <div className="absolute top-[-20%] left-[-20%] w-64 h-64 bg-white rounded-full" />
             <div className="absolute bottom-[-10%] right-[-10%] w-48 h-48 bg-white rounded-full" />
           </div>
-          
+
           <div className="relative z-10">
             <div className="mb-4">
               <div className="flex items-center gap-2 mb-8">
-                <div className="w-3 h-3 bg-white rounded-full" />
-                <span className="text-white text-sm font-medium tracking-wide">WEBSITE</span>
+                <img src="/logo-barbie.png" alt="Logo" className="w-[20%]" />
               </div>
             </div>
-            
+
             <h1 className="text-5xl font-bold text-white mb-4 leading-tight">
               Login
             </h1>
             <div className="w-16 h-1 bg-white rounded-full" />
-            
+
             <div className="mt-12 flex items-center gap-3 text-white/90">
               <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center backdrop-blur-sm">
                 <i className="ri-arrow-right-line text-2xl" />
@@ -69,20 +70,7 @@ const Login = () => {
         </div>
 
         {/* Right side - Form (LOGIN) */}
-        <div className="w-3/5 p-12 flex flex-col transition-all duration-700 ease-in-out animate-slideInFromRight">
-          {/* Tabs */}
-          <div className="flex gap-2 mb-8 self-end">
-            <Link
-              to="/register"
-              className="px-6 py-2 text-sm font-semibold transition-all duration-300 bg-gray-100 text-gray-600 hover:bg-gray-200 rounded-md"
-            >
-              SIGN UP
-            </Link>
-            <div className="px-6 py-2 text-sm font-semibold bg-pink-500 text-white shadow-md rounded-md">
-              LOGIN
-            </div>
-          </div>
-
+        <div className="w-3/5 p-12 flex flex-col transition-all duration-700 ease-in-out animate-slideInFromRight justify-center">
           {/* Alerts */}
           {isBlocked && (
             <div className="mb-6 p-4 bg-red-50 border-l-4 border-red-500 text-red-700 rounded-md animate-slideDown">
@@ -107,7 +95,7 @@ const Login = () => {
           )}
 
           {/* Form */}
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 flex-1">
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 flex flex-col justify-center my-auto h-fit">
             <FormInput
               label="E-mail"
               name="email"

@@ -12,23 +12,26 @@ const Button = ({
   onClick,
   ...props
 }) => {
-  const baseClasses = 'font-semibold rounded-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100';
-  
+  const baseClasses =
+    'font-semibold rounded-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed';
+
   const variantClasses = {
-    primary: 'bg-gradient-to-r from-pink-500 to-rose-500 text-white hover:shadow-lg hover:scale-[1.02]',
-    secondary: 'bg-gray-100 text-gray-700 hover:bg-gray-200 hover:scale-[1.02]',
-    outline: 'border-2 border-pink-500 text-pink-500 hover:bg-pink-500 hover:text-white hover:scale-[1.02]',
-    danger: 'bg-red-500 text-white hover:bg-red-600 hover:shadow-lg hover:scale-[1.02]',
-    success: 'bg-green-500 text-white hover:bg-green-600 hover:shadow-lg hover:scale-[1.02]',
-    ghost: 'text-pink-500 hover:bg-pink-50 hover:scale-[1.02]'
+    primary:
+      'bg-gradient-to-r from-pink-500 to-rose-500 text-white hover:shadow-lg',
+    secondary: 'bg-gray-100 text-gray-700 hover:bg-gray-200',
+    outline:
+      'border-2 border-pink-500 text-pink-500 hover:bg-pink-500 hover:text-white',
+    danger: 'bg-red-500 text-white hover:bg-red-600 hover:shadow-lg',
+    success: 'bg-green-500 text-white hover:bg-green-600 hover:shadow-lg',
+    ghost: 'text-pink-500 hover:bg-pink-50',
   };
-  
+
   const sizeClasses = {
     small: 'py-2 px-4 text-sm',
     medium: 'py-3 px-6 text-base',
-    large: 'py-4 px-8 text-lg'
+    large: 'py-4 px-8 text-lg',
   };
-  
+
   const buttonClasses = `
     ${baseClasses}
     ${variantClasses[variant]}

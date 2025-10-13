@@ -3,10 +3,7 @@ import * as yup from 'yup';
 // ==================== VALIDADORES DE AUTENTICAÇÃO ====================
 
 export const loginSchema = yup.object().shape({
-  email: yup
-    .string()
-    .email('E-mail inválido')
-    .required('E-mail é obrigatório'),
+  email: yup.string().email('E-mail inválido').required('E-mail é obrigatório'),
   password: yup
     .string()
     .min(6, 'Senha deve ter no mínimo 6 caracteres')
@@ -18,10 +15,25 @@ export const registerSchema = yup.object().shape({
     .string()
     .min(3, 'Nome deve ter no mínimo 3 caracteres')
     .required('Nome é obrigatório'),
-  email: yup
+  email: yup.string().email('E-mail inválido').required('E-mail é obrigatório'),
+  phone: yup
     .string()
-    .email('E-mail inválido')
-    .required('E-mail é obrigatório'),
+    .matches(
+      /^\(\d{2}\)\s?\d{4,5}-\d{4}$/,
+      'Telefone inválido. Use o formato (11) 98765-4321'
+    )
+    .required('Telefone é obrigatório'),
+  cpf: yup
+    .string()
+    .matches(
+      /^\d{3}\.\d{3}\.\d{3}-\d{2}$/,
+      'CPF inválido. Use o formato 123.456.789-00'
+    )
+    .required('CPF é obrigatório'),
+  birthDate: yup
+    .date()
+    .max(new Date(), 'Data de nascimento não pode ser futura')
+    .required('Data de nascimento é obrigatória'),
   password: yup
     .string()
     .min(6, 'Senha deve ter no mínimo 6 caracteres')
@@ -34,17 +46,10 @@ export const registerSchema = yup.object().shape({
     .string()
     .oneOf([yup.ref('password'), null], 'As senhas devem ser iguais')
     .required('Confirmação de senha é obrigatória'),
-  role: yup
-    .string()
-    .oneOf(['client', 'professional', 'admin'], 'Perfil inválido')
-    .required('Perfil é obrigatório'),
 });
 
 export const forgotPasswordSchema = yup.object().shape({
-  email: yup
-    .string()
-    .email('E-mail inválido')
-    .required('E-mail é obrigatório'),
+  email: yup.string().email('E-mail inválido').required('E-mail é obrigatório'),
 });
 
 // ==================== VALIDADORES DE PROFISSIONAIS ====================
@@ -54,10 +59,7 @@ export const professionalSchema = yup.object().shape({
     .string()
     .min(3, 'Nome deve ter no mínimo 3 caracteres')
     .required('Nome é obrigatório'),
-  email: yup
-    .string()
-    .email('E-mail inválido')
-    .required('E-mail é obrigatório'),
+  email: yup.string().email('E-mail inválido').required('E-mail é obrigatório'),
   specialty: yup
     .string()
     .min(3, 'Especialidade deve ter no mínimo 3 caracteres')
@@ -78,10 +80,7 @@ export const clientSchema = yup.object().shape({
     .string()
     .min(3, 'Nome deve ter no mínimo 3 caracteres')
     .required('Nome é obrigatório'),
-  email: yup
-    .string()
-    .email('E-mail inválido')
-    .required('E-mail é obrigatório'),
+  email: yup.string().email('E-mail inválido').required('E-mail é obrigatório'),
   phone: yup
     .string()
     .matches(
@@ -157,9 +156,7 @@ export const appointmentSchema = yup.object().shape({
 // ==================== VALIDADORES DE RELATÓRIOS ====================
 
 export const reportFilterSchema = yup.object().shape({
-  startDate: yup
-    .date()
-    .required('Data inicial é obrigatória'),
+  startDate: yup.date().required('Data inicial é obrigatória'),
   endDate: yup
     .date()
     .min(yup.ref('startDate'), 'Data final deve ser maior que a data inicial')
@@ -173,15 +170,32 @@ export const reportFilterSchema = yup.object().shape({
 
 export const formatPhone = (value) => {
   const numbers = value.replace(/\D/g, '');
-  if (numbers.length <= 10) {
-    return numbers.replace(/(\d{2})(\d{4})(\d{4})/, '($1) $2-$3');
+
+  if (numbers.length === 0) {
+    return '';
+  } else if (numbers.length <= 2) {
+    return `(${numbers}`;
+  } else if (numbers.length <= 6) {
+    return `(${numbers.slice(0, 2)}) ${numbers.slice(2)}`;
+  } else if (numbers.length <= 10) {
+    return `(${numbers.slice(0, 2)}) ${numbers.slice(2, 6)}-${numbers.slice(6)}`;
+  } else {
+    return `(${numbers.slice(0, 2)}) ${numbers.slice(2, 7)}-${numbers.slice(7, 11)}`;
   }
-  return numbers.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3');
 };
 
 export const formatCPF = (value) => {
   const numbers = value.replace(/\D/g, '');
-  return numbers.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
+
+  if (numbers.length <= 3) {
+    return numbers;
+  } else if (numbers.length <= 6) {
+    return numbers.replace(/(\d{3})(\d+)/, '$1.$2');
+  } else if (numbers.length <= 9) {
+    return numbers.replace(/(\d{3})(\d{3})(\d+)/, '$1.$2.$3');
+  } else {
+    return numbers.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
+  }
 };
 
 export const formatCurrency = (value) => {
@@ -202,4 +216,3 @@ export const formatDateTime = (date) => {
   const d = new Date(date);
   return d.toLocaleString('pt-BR');
 };
-

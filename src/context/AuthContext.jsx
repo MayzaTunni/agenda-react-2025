@@ -12,7 +12,7 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const storedUser = localStorage.getItem('user');
     const blockedUntil = localStorage.getItem('blockedUntil');
-    
+
     if (storedUser) {
       setUser(JSON.parse(storedUser));
     }
@@ -27,13 +27,13 @@ export const AuthProvider = ({ children }) => {
           localStorage.removeItem('blockedUntil');
           setLoginAttempts(0);
         }, blockedTime - new Date());
-        
+
         return () => clearTimeout(timeout);
       } else {
         localStorage.removeItem('blockedUntil');
       }
     }
-    
+
     setLoading(false);
   }, []);
 
@@ -56,7 +56,7 @@ export const AuthProvider = ({ children }) => {
         email: 'teste@teste.com',
         role: 'admin', // admin, professional, client
       };
-      
+
       setUser(defaultUser);
       localStorage.setItem('user', JSON.stringify(defaultUser));
       setLoginAttempts(0);
@@ -70,7 +70,7 @@ export const AuthProvider = ({ children }) => {
         email: foundUser.email,
         role: foundUser.role,
       };
-      
+
       setUser(userData);
       localStorage.setItem('user', JSON.stringify(userData));
       setLoginAttempts(0);
@@ -85,7 +85,9 @@ export const AuthProvider = ({ children }) => {
       setIsBlocked(true);
       const blockedUntil = new Date(Date.now() + 15 * 60 * 1000); // 15 minutos
       localStorage.setItem('blockedUntil', blockedUntil.toISOString());
-      throw new Error('Conta bloqueada por 15 minutos após 5 tentativas inválidas.');
+      throw new Error(
+        'Conta bloqueada por 15 minutos após 5 tentativas inválidas.'
+      );
     }
 
     throw new Error(`Credenciais inválidas. Tentativa ${newAttempts} de 5.`);
@@ -94,17 +96,23 @@ export const AuthProvider = ({ children }) => {
   const register = async (userData) => {
     // Simular registro
     const storedUsers = JSON.parse(localStorage.getItem('users') || '[]');
-    
+
     // Verificar se e-mail já existe
     const emailExists = storedUsers.some((u) => u.email === userData.email);
     if (emailExists) {
       throw new Error('E-mail já cadastrado.');
     }
 
+    // Verificar se CPF já existe
+    const cpfExists = storedUsers.some((u) => u.cpf === userData.cpf);
+    if (cpfExists) {
+      throw new Error('CPF já cadastrado.');
+    }
+
     const newUser = {
       id: Date.now(),
       ...userData,
-      role: userData.role || 'client',
+      role: 'client', // Todos os novos usuários são clientes por padrão
     };
 
     storedUsers.push(newUser);
@@ -148,4 +156,3 @@ export const AuthProvider = ({ children }) => {
     </AuthContext.Provider>
   );
 };
-
