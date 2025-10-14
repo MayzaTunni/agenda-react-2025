@@ -1,4 +1,9 @@
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { AuthProvider } from './context/AuthContext';
@@ -8,6 +13,9 @@ import PrivateRoute from './components/PrivateRoute';
 import Login from './pages/Auth/Login';
 import Register from './pages/Auth/Register';
 import ForgotPassword from './pages/Auth/ForgotPassword';
+
+// Landing Page
+import LandingPage from './pages/LandingPage';
 
 // Internal Pages
 import Dashboard from './pages/Dashboard';
@@ -24,8 +32,8 @@ function App() {
       <Router>
         <div className="App">
           <Routes>
-            {/* Rota raiz redireciona para login */}
-            <Route path="/" element={<Navigate to="/login" replace />} />
+            {/* Rota raiz aponta para a Landing Page */}
+            <Route path="/" element={<LandingPage />} />
 
             {/* Rotas Públicas (Autenticação) */}
             <Route path="/login" element={<Login />} />
