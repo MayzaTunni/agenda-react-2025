@@ -100,7 +100,7 @@ const Clients = () => {
           <div>
             <h1 className="text-3xl font-bold text-gray-800">Clientes</h1>
             <p className="text-gray-600 mt-1">
-              Gerenciar clientes cadastrados no sistema
+              Gerenciar clientes do salão de beleza
             </p>
           </div>
           <button
@@ -145,19 +145,13 @@ const Clients = () => {
                     </div>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="text-sm text-gray-500">
-                      {client.email}
-                    </div>
+                    <div className="text-sm text-gray-500">{client.email}</div>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="text-sm text-gray-500">
-                      {client.phone}
-                    </div>
+                    <div className="text-sm text-gray-500">{client.phone}</div>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="text-sm text-gray-500">
-                      {client.cpf}
-                    </div>
+                    <div className="text-sm text-gray-500">{client.cpf}</div>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
                     <span
@@ -188,7 +182,10 @@ const Clients = () => {
               ))}
               {clients.length === 0 && (
                 <tr>
-                  <td colSpan="6" className="px-6 py-4 text-center text-gray-500">
+                  <td
+                    colSpan="6"
+                    className="px-6 py-4 text-center text-gray-500"
+                  >
                     Nenhum cliente cadastrado
                   </td>
                 </tr>
@@ -276,4 +273,3 @@ const Clients = () => {
 };
 
 export default Clients;
-

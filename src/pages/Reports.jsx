@@ -102,7 +102,7 @@ const Reports = () => {
         <div>
           <h1 className="text-3xl font-bold text-gray-800">Relatórios</h1>
           <p className="text-gray-600 mt-1">
-            Visualizar e exportar relatórios de agendamentos
+            Visualizar e exportar relatórios do salão de beleza
           </p>
         </div>
 
@@ -127,9 +127,7 @@ const Reports = () => {
           <div className="bg-white rounded-lg shadow-md p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-gray-600 text-sm font-medium">
-                  Agendados
-                </p>
+                <p className="text-gray-600 text-sm font-medium">Agendados</p>
                 <p className="text-3xl font-bold text-blue-600 mt-2">
                   {summary?.scheduledAppointments || 0}
                 </p>
@@ -143,9 +141,7 @@ const Reports = () => {
           <div className="bg-white rounded-lg shadow-md p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-gray-600 text-sm font-medium">
-                  Concluídos
-                </p>
+                <p className="text-gray-600 text-sm font-medium">Concluídos</p>
                 <p className="text-3xl font-bold text-green-600 mt-2">
                   {summary?.completedAppointments || 0}
                 </p>
@@ -159,9 +155,7 @@ const Reports = () => {
           <div className="bg-white rounded-lg shadow-md p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-gray-600 text-sm font-medium">
-                  Cancelados
-                </p>
+                <p className="text-gray-600 text-sm font-medium">Cancelados</p>
                 <p className="text-3xl font-bold text-red-600 mt-2">
                   {summary?.cancelledAppointments || 0}
                 </p>
@@ -315,8 +309,8 @@ const Reports = () => {
                           appointment.status === 'scheduled'
                             ? 'bg-blue-100 text-blue-800'
                             : appointment.status === 'completed'
-                            ? 'bg-green-100 text-green-800'
-                            : 'bg-red-100 text-red-800'
+                              ? 'bg-green-100 text-green-800'
+                              : 'bg-red-100 text-red-800'
                         }`}
                       >
                         {appointment.status === 'scheduled' && 'Agendado'}
@@ -325,13 +319,18 @@ const Reports = () => {
                       </span>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                      {new Date(appointment.createdAt).toLocaleDateString('pt-BR')}
+                      {new Date(appointment.createdAt).toLocaleDateString(
+                        'pt-BR'
+                      )}
                     </td>
                   </tr>
                 ))}
                 {filteredAppointments.length === 0 && (
                   <tr>
-                    <td colSpan="7" className="px-6 py-4 text-center text-gray-500">
+                    <td
+                      colSpan="7"
+                      className="px-6 py-4 text-center text-gray-500"
+                    >
                       Nenhum agendamento encontrado
                     </td>
                   </tr>
@@ -344,8 +343,9 @@ const Reports = () => {
         {/* Informação sobre exportação */}
         <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
           <p className="text-sm text-yellow-800">
-            ℹ️ <strong>Nota:</strong> A exportação de CSV e PDF é simulada nesta versão. 
-            Em produção, os arquivos seriam gerados e baixados automaticamente.
+            ℹ️ <strong>Nota:</strong> A exportação de CSV e PDF é simulada nesta
+            versão. Em produção, os arquivos seriam gerados e baixados
+            automaticamente.
           </p>
         </div>
       </div>
@@ -354,4 +354,3 @@ const Reports = () => {
 };
 
 export default Reports;
-

@@ -4,7 +4,12 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { toast } from 'react-toastify';
 import Layout from '../components/Layout';
 import FormInput from '../components/FormInput';
-import { appointmentsAPI, professionalsAPI, clientsAPI, servicesAPI } from '../services/api';
+import {
+  appointmentsAPI,
+  professionalsAPI,
+  clientsAPI,
+  servicesAPI,
+} from '../services/api';
 import { appointmentSchema } from '../utils/validators';
 import { formatDate, formatCurrency } from '../utils/validators';
 
@@ -46,12 +51,13 @@ const Schedule = () => {
 
   const loadData = async () => {
     try {
-      const [appointmentsData, professionalsData, clientsData, servicesData] = await Promise.all([
-        appointmentsAPI.getAll(),
-        professionalsAPI.getAll(),
-        clientsAPI.getAll(),
-        servicesAPI.getAll(),
-      ]);
+      const [appointmentsData, professionalsData, clientsData, servicesData] =
+        await Promise.all([
+          appointmentsAPI.getAll(),
+          professionalsAPI.getAll(),
+          clientsAPI.getAll(),
+          servicesAPI.getAll(),
+        ]);
       setAppointments(appointmentsData);
       setProfessionals(professionalsData);
       setClients(clientsData);
@@ -65,7 +71,10 @@ const Schedule = () => {
 
   const loadAvailableSlots = async (professionalId, date) => {
     try {
-      const slots = await appointmentsAPI.getAvailableSlots(Number(professionalId), date);
+      const slots = await appointmentsAPI.getAvailableSlots(
+        Number(professionalId),
+        date
+      );
       setAvailableSlots(slots);
     } catch (error) {
       console.error('Erro ao carregar horários disponíveis:', error);
@@ -164,7 +173,9 @@ const Schedule = () => {
       matches = matches && appointment.date === selectedDate;
     }
     if (selectedProfessionalId) {
-      matches = matches && appointment.professionalId === Number(selectedProfessionalId);
+      matches =
+        matches &&
+        appointment.professionalId === Number(selectedProfessionalId);
     }
     return matches;
   });
@@ -186,12 +197,14 @@ const Schedule = () => {
           <div>
             <h1 className="text-3xl font-bold text-gray-800">Agenda</h1>
             <p className="text-gray-600 mt-1">
-              Visualizar e gerenciar agendamentos
+              Visualizar e gerenciar agendamentos de tratamentos
             </p>
           </div>
           <div className="flex space-x-2">
             <button
-              onClick={() => setViewMode(viewMode === 'list' ? 'calendar' : 'list')}
+              onClick={() =>
+                setViewMode(viewMode === 'list' ? 'calendar' : 'list')
+              }
               className="bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition font-medium"
             >
               {viewMode === 'list' ? '📅 Calendário' : '📋 Lista'}
@@ -292,7 +305,9 @@ const Schedule = () => {
                     </div>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
-                    <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${getStatusColor(appointment.status)}`}>
+                    <span
+                      className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${getStatusColor(appointment.status)}`}
+                    >
                       {getStatusText(appointment.status)}
                     </span>
                   </td>
@@ -324,7 +339,10 @@ const Schedule = () => {
               ))}
               {filteredAppointments.length === 0 && (
                 <tr>
-                  <td colSpan="6" className="px-6 py-4 text-center text-gray-500">
+                  <td
+                    colSpan="6"
+                    className="px-6 py-4 text-center text-gray-500"
+                  >
                     Nenhum agendamento encontrado
                   </td>
                 </tr>
@@ -344,7 +362,10 @@ const Schedule = () => {
 
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
               <div className="mb-4">
-                <label htmlFor="clientId" className="block text-sm font-medium text-gray-700 mb-1">
+                <label
+                  htmlFor="clientId"
+                  className="block text-sm font-medium text-gray-700 mb-1"
+                >
                   Cliente <span className="text-red-500">*</span>
                 </label>
                 <select
@@ -362,12 +383,17 @@ const Schedule = () => {
                   ))}
                 </select>
                 {errors.clientId && (
-                  <p className="mt-1 text-sm text-red-600">{errors.clientId.message}</p>
+                  <p className="mt-1 text-sm text-red-600">
+                    {errors.clientId.message}
+                  </p>
                 )}
               </div>
 
               <div className="mb-4">
-                <label htmlFor="professionalId" className="block text-sm font-medium text-gray-700 mb-1">
+                <label
+                  htmlFor="professionalId"
+                  className="block text-sm font-medium text-gray-700 mb-1"
+                >
                   Profissional <span className="text-red-500">*</span>
                 </label>
                 <select
@@ -385,12 +411,17 @@ const Schedule = () => {
                   ))}
                 </select>
                 {errors.professionalId && (
-                  <p className="mt-1 text-sm text-red-600">{errors.professionalId.message}</p>
+                  <p className="mt-1 text-sm text-red-600">
+                    {errors.professionalId.message}
+                  </p>
                 )}
               </div>
 
               <div className="mb-4">
-                <label htmlFor="serviceId" className="block text-sm font-medium text-gray-700 mb-1">
+                <label
+                  htmlFor="serviceId"
+                  className="block text-sm font-medium text-gray-700 mb-1"
+                >
                   Serviço <span className="text-red-500">*</span>
                 </label>
                 <select
@@ -403,12 +434,15 @@ const Schedule = () => {
                   <option value="">Selecione um serviço</option>
                   {services.map((service) => (
                     <option key={service.id} value={service.id}>
-                      {service.name} - {service.duration}min - {formatCurrency(service.price)}
+                      {service.name} - {service.duration}min -{' '}
+                      {formatCurrency(service.price)}
                     </option>
                   ))}
                 </select>
                 {errors.serviceId && (
-                  <p className="mt-1 text-sm text-red-600">{errors.serviceId.message}</p>
+                  <p className="mt-1 text-sm text-red-600">
+                    {errors.serviceId.message}
+                  </p>
                 )}
               </div>
 
@@ -422,7 +456,10 @@ const Schedule = () => {
               />
 
               <div className="mb-4">
-                <label htmlFor="time" className="block text-sm font-medium text-gray-700 mb-1">
+                <label
+                  htmlFor="time"
+                  className="block text-sm font-medium text-gray-700 mb-1"
+                >
                   Horário <span className="text-red-500">*</span>
                 </label>
                 <select
@@ -445,17 +482,24 @@ const Schedule = () => {
                   ))}
                 </select>
                 {errors.time && (
-                  <p className="mt-1 text-sm text-red-600">{errors.time.message}</p>
-                )}
-                {availableSlots.length === 0 && watchProfessionalId && watchDate && (
-                  <p className="mt-1 text-sm text-yellow-600">
-                    Nenhum horário disponível para esta data
+                  <p className="mt-1 text-sm text-red-600">
+                    {errors.time.message}
                   </p>
                 )}
+                {availableSlots.length === 0 &&
+                  watchProfessionalId &&
+                  watchDate && (
+                    <p className="mt-1 text-sm text-yellow-600">
+                      Nenhum horário disponível para esta data
+                    </p>
+                  )}
               </div>
 
               <div className="mb-4">
-                <label htmlFor="notes" className="block text-sm font-medium text-gray-700 mb-1">
+                <label
+                  htmlFor="notes"
+                  className="block text-sm font-medium text-gray-700 mb-1"
+                >
                   Observações
                 </label>
                 <textarea
@@ -466,7 +510,9 @@ const Schedule = () => {
                   placeholder="Observações sobre o agendamento..."
                 />
                 {errors.notes && (
-                  <p className="mt-1 text-sm text-red-600">{errors.notes.message}</p>
+                  <p className="mt-1 text-sm text-red-600">
+                    {errors.notes.message}
+                  </p>
                 )}
               </div>
 
@@ -495,4 +541,3 @@ const Schedule = () => {
 };
 
 export default Schedule;
-

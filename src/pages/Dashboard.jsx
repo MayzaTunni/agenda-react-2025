@@ -50,9 +50,9 @@ const Dashboard = () => {
       roles: ['admin', 'professional', 'client'],
     },
     {
-      title: 'Agendamentos Concluídos',
+      title: 'Tratamentos Concluídos',
       value: summary?.completedAppointments || 0,
-      icon: '✔️',
+      icon: '✨',
       color: 'bg-purple-500',
       roles: ['admin', 'professional'],
     },
@@ -73,22 +73,20 @@ const Dashboard = () => {
     {
       title: 'Total de Profissionais',
       value: summary?.totalProfessionals || 0,
-      icon: '👨‍⚕️',
+      icon: '💇‍♀️',
       color: 'bg-indigo-500',
       roles: ['admin'],
     },
     {
       title: 'Total de Serviços',
       value: summary?.totalServices || 0,
-      icon: '🔧',
+      icon: '💄',
       color: 'bg-pink-500',
       roles: ['admin'],
     },
   ];
 
-  const filteredCards = cards.filter(card =>
-    card.roles.includes(user?.role)
-  );
+  const filteredCards = cards.filter((card) => card.roles.includes(user?.role));
 
   const quickLinks = [
     {
@@ -102,7 +100,7 @@ const Dashboard = () => {
       title: 'Novo Agendamento',
       path: '/schedule?action=new',
       icon: '➕',
-      description: 'Criar novo agendamento',
+      description: 'Agendar novo tratamento',
       roles: ['admin', 'professional', 'client'],
     },
     {
@@ -121,7 +119,7 @@ const Dashboard = () => {
     },
   ];
 
-  const filteredLinks = quickLinks.filter(link =>
+  const filteredLinks = quickLinks.filter((link) =>
     link.roles.includes(user?.role)
   );
 
@@ -132,9 +130,7 @@ const Dashboard = () => {
           <h1 className="text-3xl font-bold text-gray-800">
             Bem-vindo, {user?.name}!
           </h1>
-          <p className="text-gray-600 mt-1">
-            Visão geral do sistema de agendamento
-          </p>
+          <p className="text-gray-600 mt-1">Visão geral do salão de beleza</p>
         </div>
 
         {/* Cards de Resumo */}
@@ -153,7 +149,9 @@ const Dashboard = () => {
                     {card.value}
                   </p>
                 </div>
-                <div className={`${card.color} text-white text-3xl p-3 rounded-full`}>
+                <div
+                  className={`${card.color} text-white text-3xl p-3 rounded-full`}
+                >
                   {card.icon}
                 </div>
               </div>
@@ -177,9 +175,7 @@ const Dashboard = () => {
                 <h3 className="text-lg font-semibold text-gray-800 mb-1">
                   {link.title}
                 </h3>
-                <p className="text-sm text-gray-600">
-                  {link.description}
-                </p>
+                <p className="text-sm text-gray-600">{link.description}</p>
               </Link>
             ))}
           </div>
@@ -191,12 +187,12 @@ const Dashboard = () => {
             💡 Dica do Sistema
           </h3>
           <p className="text-primary-700">
-            {user?.role === 'admin' && 
-              'Como administrador, você tem acesso total ao sistema. Use os relatórios para acompanhar o desempenho.'}
-            {user?.role === 'professional' && 
-              'Você pode visualizar sua agenda e gerenciar seus agendamentos. Mantenha seus horários atualizados!'}
-            {user?.role === 'client' && 
-              'Você pode agendar serviços e visualizar seus agendamentos. Entre em contato em caso de dúvidas.'}
+            {user?.role === 'admin' &&
+              'Como proprietária, você tem acesso total ao sistema. Use os relatórios para acompanhar o desempenho do salão.'}
+            {user?.role === 'professional' &&
+              'Você pode visualizar sua agenda e gerenciar seus agendamentos. Mantenha seus horários atualizados para atender suas clientes!'}
+            {user?.role === 'client' &&
+              'Você pode agendar tratamentos e visualizar seus agendamentos. Cuide da sua beleza com praticidade!'}
           </p>
         </div>
       </div>
@@ -205,4 +201,3 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
-

@@ -9,13 +9,13 @@ const Sidebar = () => {
     {
       name: 'Dashboard',
       path: '/dashboard',
-      icon: '📊',
+      icon: '💄',
       roles: ['admin', 'professional', 'client'],
     },
     {
       name: 'Profissionais',
       path: '/professionals',
-      icon: '👨‍⚕️',
+      icon: '💇‍♀️',
       roles: ['admin'],
     },
     {
@@ -27,7 +27,7 @@ const Sidebar = () => {
     {
       name: 'Serviços',
       path: '/services',
-      icon: '🔧',
+      icon: '✨',
       roles: ['admin'],
     },
     {
@@ -44,7 +44,7 @@ const Sidebar = () => {
     },
   ];
 
-  const filteredMenuItems = menuItems.filter(item =>
+  const filteredMenuItems = menuItems.filter((item) =>
     item.roles.includes(user?.role)
   );
 
@@ -74,4 +74,3 @@ const Sidebar = () => {
 };
 
 export default Sidebar;
-

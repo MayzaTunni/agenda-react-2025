@@ -101,7 +101,7 @@ const Services = () => {
           <div>
             <h1 className="text-3xl font-bold text-gray-800">Serviços</h1>
             <p className="text-gray-600 mt-1">
-              Gerenciar serviços oferecidos no sistema
+              Gerenciar tratamentos e serviços oferecidos no salão
             </p>
           </div>
           <button
@@ -189,7 +189,10 @@ const Services = () => {
               ))}
               {services.length === 0 && (
                 <tr>
-                  <td colSpan="6" className="px-6 py-4 text-center text-gray-500">
+                  <td
+                    colSpan="6"
+                    className="px-6 py-4 text-center text-gray-500"
+                  >
                     Nenhum serviço cadastrado
                   </td>
                 </tr>
@@ -208,13 +211,45 @@ const Services = () => {
             </h2>
 
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-              <FormInput
-                label="Nome do Serviço"
-                name="name"
-                register={register('name')}
-                error={errors.name}
-                required
-              />
+              <div className="mb-4">
+                <label
+                  htmlFor="name"
+                  className="block text-sm font-medium text-gray-700 mb-1"
+                >
+                  Nome do Serviço <span className="text-red-500">*</span>
+                </label>
+                <select
+                  id="name"
+                  {...register('name')}
+                  className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-primary-500 ${
+                    errors.name ? 'border-red-500' : 'border-gray-300'
+                  }`}
+                >
+                  <option value="">Selecione um serviço</option>
+                  <option value="Corte Feminino">Corte Feminino</option>
+                  <option value="Corte Masculino">Corte Masculino</option>
+                  <option value="Escova">Escova</option>
+                  <option value="Botox Capilar">Botox Capilar</option>
+                  <option value="Hidratação">Hidratação</option>
+                  <option value="Coloração">Coloração</option>
+                  <option value="Mechas">Mechas</option>
+                  <option value="Manicure">Manicure</option>
+                  <option value="Pedicure">Pedicure</option>
+                  <option value="Design de Sobrancelhas">
+                    Design de Sobrancelhas
+                  </option>
+                  <option value="Maquiagem">Maquiagem</option>
+                  <option value="Limpeza de Pele">Limpeza de Pele</option>
+                  <option value="Massagem Relaxante">Massagem Relaxante</option>
+                  <option value="Drenagem Linfática">Drenagem Linfática</option>
+                  <option value="Outros">Outros</option>
+                </select>
+                {errors.name && (
+                  <p className="mt-1 text-sm text-red-600">
+                    {errors.name.message}
+                  </p>
+                )}
+              </div>
 
               <FormInput
                 label="Duração (minutos)"
@@ -238,7 +273,10 @@ const Services = () => {
               />
 
               <div className="mb-4">
-                <label htmlFor="description" className="block text-sm font-medium text-gray-700 mb-1">
+                <label
+                  htmlFor="description"
+                  className="block text-sm font-medium text-gray-700 mb-1"
+                >
                   Descrição
                 </label>
                 <textarea
@@ -251,7 +289,9 @@ const Services = () => {
                   placeholder="Descrição do serviço..."
                 />
                 {errors.description && (
-                  <p className="mt-1 text-sm text-red-600">{errors.description.message}</p>
+                  <p className="mt-1 text-sm text-red-600">
+                    {errors.description.message}
+                  </p>
                 )}
               </div>
 
@@ -280,4 +320,3 @@ const Services = () => {
 };
 
 export default Services;
-

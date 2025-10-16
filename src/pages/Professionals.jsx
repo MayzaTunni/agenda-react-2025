@@ -100,7 +100,8 @@ const Professionals = () => {
           <div>
             <h1 className="text-3xl font-bold text-gray-800">Profissionais</h1>
             <p className="text-gray-600 mt-1">
-              Gerenciar profissionais cadastrados no sistema
+              Gerenciar cabeleireiros, esteticistas e outros profissionais do
+              salão
             </p>
           </div>
           <button
@@ -188,7 +189,10 @@ const Professionals = () => {
               ))}
               {professionals.length === 0 && (
                 <tr>
-                  <td colSpan="6" className="px-6 py-4 text-center text-gray-500">
+                  <td
+                    colSpan="6"
+                    className="px-6 py-4 text-center text-gray-500"
+                  >
                     Nenhum profissional cadastrado
                   </td>
                 </tr>
@@ -203,7 +207,9 @@ const Professionals = () => {
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
           <div className="bg-white rounded-lg p-8 max-w-md w-full max-h-[90vh] overflow-y-auto">
             <h2 className="text-2xl font-bold text-gray-800 mb-6">
-              {editingProfessional ? 'Editar Profissional' : 'Novo Profissional'}
+              {editingProfessional
+                ? 'Editar Profissional'
+                : 'Novo Profissional'}
             </h2>
 
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
@@ -224,13 +230,38 @@ const Professionals = () => {
                 required
               />
 
-              <FormInput
-                label="Especialidade"
-                name="specialty"
-                register={register('specialty')}
-                error={errors.specialty}
-                required
-              />
+              <div className="mb-4">
+                <label
+                  htmlFor="specialty"
+                  className="block text-sm font-medium text-gray-700 mb-1"
+                >
+                  Especialidade <span className="text-red-500">*</span>
+                </label>
+                <select
+                  id="specialty"
+                  {...register('specialty')}
+                  className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-primary-500 ${
+                    errors.specialty ? 'border-red-500' : 'border-gray-300'
+                  }`}
+                >
+                  <option value="">Selecione uma especialidade</option>
+                  <option value="Cabeleireira">Cabeleireira</option>
+                  <option value="Esteticista">Esteticista</option>
+                  <option value="Manicure">Manicure</option>
+                  <option value="Pedicure">Pedicure</option>
+                  <option value="Designer de Sobrancelhas">
+                    Designer de Sobrancelhas
+                  </option>
+                  <option value="Maquiadora">Maquiadora</option>
+                  <option value="Massagista">Massagista</option>
+                  <option value="Outros">Outros</option>
+                </select>
+                {errors.specialty && (
+                  <p className="mt-1 text-sm text-red-600">
+                    {errors.specialty.message}
+                  </p>
+                )}
+              </div>
 
               <FormInput
                 label="Telefone"
@@ -266,4 +297,3 @@ const Professionals = () => {
 };
 
 export default Professionals;
-

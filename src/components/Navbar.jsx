@@ -14,7 +14,7 @@ const Navbar = () => {
 
   const getRoleName = (role) => {
     const roles = {
-      admin: 'Administrador',
+      admin: 'Proprietária',
       professional: 'Profissional',
       client: 'Cliente',
     };
@@ -27,9 +27,9 @@ const Navbar = () => {
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center">
             <Link to="/dashboard" className="flex items-center">
-              <span className="text-2xl font-bold text-primary-600">📅</span>
+              <span className="text-2xl font-bold text-primary-600">💄</span>
               <span className="ml-2 text-xl font-semibold text-gray-800">
-                Sistema de Agendamento
+                Salão de Beleza
               </span>
             </Link>
           </div>
@@ -39,7 +39,7 @@ const Navbar = () => {
               <p className="text-sm font-medium text-gray-800">{user?.name}</p>
               <p className="text-xs text-gray-500">{getRoleName(user?.role)}</p>
             </div>
-            
+
             <button
               onClick={handleLogout}
               className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition font-medium"
@@ -54,4 +54,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-

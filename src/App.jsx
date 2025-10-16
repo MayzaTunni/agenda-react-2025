@@ -32,8 +32,14 @@ function App() {
       <Router>
         <div className="App">
           <Routes>
-            {/* Rota raiz aponta para a Landing Page */}
-            <Route path="/" element={<LandingPage />} />
+            {/* Landing Page */}
+            <Route path="/corte-style-shine" element={<LandingPage />} />
+
+            {/* Rota raiz redireciona para a Landing Page */}
+            <Route
+              path="/"
+              element={<Navigate to="/corte-style-shine" replace />}
+            />
 
             {/* Rotas Públicas (Autenticação) */}
             <Route path="/login" element={<Login />} />

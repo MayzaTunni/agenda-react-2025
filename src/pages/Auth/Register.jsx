@@ -4,11 +4,11 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
 import { registerSchema, formatPhone, formatCPF } from '../../utils/validators';
 import FormInput from '../../components/FormInput';
-import PasswordValidator from '../../components/PasswordValidator';
 import { toast } from 'react-toastify';
 import 'remixicon/fonts/remixicon.css';
 import Button from '../../components/Button';
 import { useState } from 'react';
+import PasswordValidator from '../../components/PasswordValidator';
 
 const Register = () => {
   const navigate = useNavigate();
