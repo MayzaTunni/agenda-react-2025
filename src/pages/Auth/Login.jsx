@@ -32,6 +32,16 @@ const Login = () => {
 
   return (
     <div className="min-h-screen w-full flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-pink-500 via-pink-600 to-rose-600">
+      <Button
+        className="absolute top-10 left-[23vw] bg-transparent text-white flex flex-row items-center gap-2 hover:bg-transparent hover:underline"
+        variant="secondary"
+        size="small"
+        onClick={() => navigate('/')}
+      >
+        <i className="ri-arrow-left-long-line text-white" /> Voltar para a
+        página inicial
+      </Button>
+
       {/* Decorative circles */}
       <div className="absolute top-[-10%] left-[-5%] w-96 h-96 bg-pink-400/30 rounded-full blur-3xl animate-pulse" />
       <div
@@ -95,7 +105,10 @@ const Login = () => {
           )}
 
           {/* Form */}
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 flex flex-col justify-center my-auto h-fit">
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            className="space-y-6 flex flex-col justify-center my-auto h-fit"
+          >
             <FormInput
               label="E-mail"
               name="email"

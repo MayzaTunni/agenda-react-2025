@@ -10,25 +10,25 @@ const About = () => {
       title: 'Profissionais Experientes',
       description:
         'Nossa equipe é formada por profissionais altamente qualificados e experientes.',
-      icon: '👩‍💼',
+      icon: <i class="ri-team-line text-[#db2777]" />,
     },
     {
       title: 'Ambiente Acolhedor',
       description:
         'Um espaço pensado para seu conforto e bem-estar durante os procedimentos.',
-      icon: '🏠',
+      icon: <i class="ri-home-heart-line text-[#db2777]" />,
     },
     {
       title: 'Produtos Premium',
       description:
         'Utilizamos apenas produtos de alta qualidade das melhores marcas do mercado.',
-      icon: '✨',
+      icon: <i class="ri-sparkling-line text-[#db2777]" />,
     },
     {
       title: 'Atendimento Personalizado',
       description:
         'Cada cliente recebe um atendimento único, baseado em suas necessidades.',
-      icon: '🤝',
+      icon: <i class="ri-shake-hands-line text-[#db2777]" />,
     },
   ];
 
@@ -45,7 +45,7 @@ const About = () => {
           >
             <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
               <img
-                src="/images/salon-interior.jpg"
+                src="public/interior-salon.jpg"
                 alt="Interior do salão"
                 className="w-full h-full object-cover"
               />
@@ -80,7 +80,9 @@ const About = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               {features.map((feature, index) => (
                 <div key={index} className="flex items-start space-x-4">
-                  <div className="text-2xl">{feature.icon}</div>
+                  <div className="w-[40px] h-[40px] flex flex-col items-center justify-center bg-primary-100 rounded-[8px] shrink-0">
+                    <div className="text-2xl">{feature.icon}</div>
+                  </div>
                   <div>
                     <h3 className="font-semibold text-gray-800 mb-1">
                       {feature.title}

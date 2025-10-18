@@ -19,28 +19,28 @@ const Services = () => {
   const [servicesRef, isServicesVisible] = useIntersectionObserver();
   const services = [
     {
-      icon: '✂️',
+      icon: <i className="ri-scissors-2-line" />,
       title: 'Cortes',
       description:
         'Cortes modernos e personalizados para realçar sua beleza natural.',
       price: '60',
     },
     {
-      icon: '💇‍♀️',
+      icon: <i className="ri-brush-ai-fill" />,
       title: 'Coloração',
       description:
         'Transforme seu visual com nossas técnicas profissionais de coloração.',
       price: '150',
     },
     {
-      icon: '💆‍♀️',
+      icon: <i className="ri-ink-bottle-fill" />,
       title: 'Tratamentos',
       description:
         'Hidratação, reconstrução e tratamentos especializados para seus cabelos.',
       price: '120',
     },
     {
-      icon: '💅',
+      icon: <i className="ri-hand" />,
       title: 'Manicure',
       description:
         'Cuidados completos para suas unhas com produtos de primeira linha.',

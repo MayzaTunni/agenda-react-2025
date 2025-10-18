@@ -7,32 +7,32 @@ const Gallery = () => {
   const [galleryRef, isGalleryVisible] = useIntersectionObserver();
   const images = [
     {
-      url: '/images/gallery/hair-1.jpg',
+      url: 'public/modern-haircut.jpg',
       title: 'Corte Moderno',
       category: 'Cortes',
     },
     {
-      url: '/images/gallery/hair-2.jpg',
+      url: 'public/coloring.jpg',
       title: 'Coloração',
       category: 'Coloração',
     },
     {
-      url: '/images/gallery/hair-3.jpg',
+      url: 'public/hairstyle.jpg',
       title: 'Penteado',
       category: 'Penteados',
     },
     {
-      url: '/images/gallery/hair-4.jpg',
+      url: 'public/treated-hair.jpg',
       title: 'Tratamento',
       category: 'Tratamentos',
     },
     {
-      url: '/images/gallery/hair-5.jpg',
+      url: 'public/mechas.jpg',
       title: 'Mechas',
       category: 'Coloração',
     },
     {
-      url: '/images/gallery/hair-6.jpg',
+      url: 'public/finalizacao.jpg',
       title: 'Finalização',
       category: 'Penteados',
     },

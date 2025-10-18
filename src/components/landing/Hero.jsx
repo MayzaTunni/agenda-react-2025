@@ -50,9 +50,9 @@ const Hero = () => {
           <div className="relative">
             <div className="aspect-square rounded-full overflow-hidden shadow-xl">
               <img
-                src="/images/hero-image.jpg"
+                src="public/hero.jpg"
                 alt="Mulher sorrindo após tratamento"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover "
               />
             </div>
             {/* Destaque flutuante */}
