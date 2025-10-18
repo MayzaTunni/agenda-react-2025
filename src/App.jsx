@@ -1,5 +1,5 @@
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Routes,
   Route,
   Navigate,
@@ -33,12 +33,12 @@ function App() {
         <div className="App">
           <Routes>
             {/* Landing Page */}
-            <Route path="/corte-style-shine" element={<LandingPage />} />
+            <Route path="/" element={<LandingPage />} />
 
-            {/* Rota raiz redireciona para a Landing Page */}
+            {/* Rota antiga redireciona para a nova rota */}
             <Route
-              path="/"
-              element={<Navigate to="/corte-style-shine" replace />}
+              path="/corte-style-shine"
+              element={<Navigate to="/" replace />}
             />
 
             {/* Rotas Públicas (Autenticação) */}
