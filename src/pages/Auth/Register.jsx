@@ -70,6 +70,16 @@ const Register = () => {
 
   return (
     <div className="min-h-screen w-full flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-pink-500 via-pink-600 to-rose-600">
+      <Button
+        className="absolute top-10 left-[23vw] bg-transparent text-white flex flex-row items-center gap-2 hover:bg-transparent hover:underline"
+        variant="secondary"
+        size="small"
+        onClick={() => navigate('/')}
+      >
+        <i className="ri-arrow-left-long-line text-white" /> Voltar para a
+        página inicial
+      </Button>
+
       {/* Decorative circles */}
       <div className="absolute top-[-10%] left-[-5%] w-96 h-96 bg-pink-400/30 rounded-full blur-3xl animate-pulse" />
       <div
@@ -337,7 +347,11 @@ const Register = () => {
           <div className="relative z-10">
             <div className="mb-4">
               <div className="flex items-center gap-2 mb-8">
-                <img src="/logo-barbie.png" alt="Logo" className="w-[20%]" />
+                <img
+                  src="public/logo-barbie.png"
+                  alt="Logo"
+                  className="w-[20%]"
+                />
               </div>
             </div>
 

@@ -62,7 +62,7 @@ const Login = () => {
           <div className="relative z-10">
             <div className="mb-4">
               <div className="flex items-center gap-2 mb-8">
-                <img src="/logo-barbie.png" alt="Logo" className="w-[20%]" />
+                <img src="public/logo-barbie.png" alt="Logo" className="w-[20%]" />
               </div>
             </div>
 
