@@ -6,42 +6,42 @@ const Sidebar = () => {
   const { user } = useAuth();
 
   const menuItems = [
-    {
-      name: 'Dashboard',
-      path: '/dashboard',
-      icon: '💄',
-      roles: ['admin', 'professional', 'client'],
-    },
-    {
-      name: 'Profissionais',
-      path: '/professionals',
-      icon: '💇‍♀️',
-      roles: ['admin'],
-    },
-    {
-      name: 'Clientes',
-      path: '/clients',
-      icon: '👥',
-      roles: ['admin', 'professional'],
-    },
+    // {
+    //   name: 'Dashboard',
+    //   path: '/dashboard',
+    //   icon: '💄',
+    //   roles: ['admin', 'professional', 'client'],
+    // },
+    // {
+    //   name: 'Profissionais',
+    //   path: '/professionals',
+    //   icon: '💇‍♀️',
+    //   roles: ['admin'],
+    // },
+    // {
+    //   name: 'Clientes',
+    //   path: '/clients',
+    //   icon: '👥',
+    //   roles: ['admin', 'professional'],
+    // },
     {
       name: 'Serviços',
       path: '/services',
       icon: '✨',
       roles: ['admin'],
     },
-    {
-      name: 'Agenda',
-      path: '/schedule',
-      icon: '📅',
-      roles: ['admin', 'professional', 'client'],
-    },
-    {
-      name: 'Relatórios',
-      path: '/reports',
-      icon: '📈',
-      roles: ['admin', 'professional'],
-    },
+    // {
+    //   name: 'Agenda',
+    //   path: '/schedule',
+    //   icon: '📅',
+    //   roles: ['admin', 'professional', 'client'],
+    // },
+    // {
+    //   name: 'Relatórios',
+    //   path: '/reports',
+    //   icon: '📈',
+    //   roles: ['admin', 'professional'],
+    // },
   ];
 
   const filteredMenuItems = menuItems.filter((item) =>
