@@ -31,7 +31,7 @@ const FormInput = ({
           placeholder={placeholder}
           {...register}
           {...rest}
-          className={`w-full px-4 py-2 ring-1 focus:ring-pink-500 rounded-lg transition-all duration-300 outline-none focus:outline-none focus-visible:outline-none ease-in-out hover:placeholder-gray-700 hover:bg-pink-50 hover:ring-pink-50 bg-white ${
+          className={`w-full px-4 py-2 ring-1 focus:ring-[#E3B8B9] rounded-lg transition-all duration-300 outline-none focus:outline-none focus-visible:outline-none ease-in-out hover:placeholder-gray-700 hover:bg-[#FEF4F4] hover:ring-[#E3B8B9] bg-white ${
             error ? 'ring-red-500' : 'ring-gray-200'
           } placeholder:transition-colors placeholder:duration-300 focus:shadow-[0_0_0_4px_rgba(236,72,153,0.25)] ${
             isPassword ? 'pr-12' : ''

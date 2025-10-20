@@ -31,14 +31,14 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen w-full flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-[FFBFBC] via-pink-600 to-rose-600">
+    <div className="min-h-screen w-full flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-[#E3B8B9] via-[#EFE0DA] to-[#FEF4F4]">
       <Button
-        className="absolute top-10 left-[23vw] bg-transparent text-white flex flex-row items-center gap-2 hover:bg-transparent hover:underline"
+        className="absolute top-10 left-[23vw] bg-transparent text-[#282828] flex flex-row items-center gap-2 hover:bg-transparent hover:underline"
         variant="secondary"
         size="small"
         onClick={() => navigate('/')}
       >
-        <i className="ri-arrow-left-long-line text-white" /> Voltar para a
+        <i className="ri-arrow-left-long-line text-[#282828]" /> Voltar para a
         página inicial
       </Button>
 
@@ -53,7 +53,7 @@ const Login = () => {
       {/* Main card container with animation */}
       <div className="relative z-10 w-full max-w-5xl mx-4 bg-white rounded-2xl shadow-2xl overflow-hidden flex min-h-[600px] animate-fadeIn">
         {/* Left side - Pink panel (LOGIN) */}
-        <div className="w-2/5 bg-gradient-to-br from-pink-500 to-rose-500 p-12 flex flex-col justify-center relative overflow-hidden transition-all duration-700 ease-in-out animate-slideInFromLeft">
+        <div className="w-2/5 bg-gradient-to-br from-[#E3B8B9] to-[#EFE0DA] p-12 flex flex-col justify-center relative overflow-hidden transition-all duration-700 ease-in-out animate-slideInFromLeft">
           <div className="absolute top-0 left-0 w-full h-full opacity-10">
             <div className="absolute top-[-20%] left-[-20%] w-64 h-64 bg-white rounded-full" />
             <div className="absolute bottom-[-10%] right-[-10%] w-48 h-48 bg-white rounded-full" />
@@ -65,18 +65,18 @@ const Login = () => {
                 <img
                   src="public/logo-barbie.png"
                   alt="Logo"
-                  className="w-[20%]"
+                  className="w-[20%] fill-[#282828]"
                 />
               </div>
             </div>
 
-            <h1 className="text-5xl font-bold text-white mb-4 leading-tight">
+            <h1 className="text-5xl font-bold text-[#282828] mb-4 leading-tight">
               Login
             </h1>
-            <div className="w-16 h-1 bg-white rounded-full" />
+            <div className="w-16 h-1 bg-[#282828] rounded-full" />
 
-            <div className="mt-12 flex items-center gap-3 text-white/90">
-              <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center backdrop-blur-sm">
+            <div className="mt-12 flex items-center gap-3 text-[#282828]/90">
+              <div className="w-12 h-12 rounded-full bg-[#FEF4F4]/20 flex items-center justify-center backdrop-blur-sm">
                 <i className="ri-arrow-right-line text-2xl" />
               </div>
             </div>
@@ -136,7 +136,7 @@ const Login = () => {
             <div className="flex items-center justify-between pt-2">
               <Link
                 to="/forgot-password"
-                className="text-sm text-pink-500 hover:text-pink-600 font-medium transition-colors"
+                className="text-sm text-[#5F5F5F] hover:text-[#282828] font-medium transition-colors"
               >
                 Esqueceu a senha?
               </Link>
@@ -144,12 +144,12 @@ const Login = () => {
 
             <Button
               type="submit"
-              variant="primary"
+              variant="secondary"
               size="medium"
               disabled={isBlocked}
               loading={isSubmitting}
               loadingText="Entrando..."
-              className="w-full"
+              className="w-full hover:bg-[#E3B8B9]"
             >
               ENTRAR
             </Button>
@@ -161,7 +161,7 @@ const Login = () => {
               Não tem uma conta?{' '}
               <Link
                 to="/register"
-                className="text-pink-500 font-semibold hover:text-pink-600 transition-colors"
+                className="text-[#5F5F5F] font-semibold hover:text-[#282828] transition-colors"
               >
                 Cadastre-se
               </Link>

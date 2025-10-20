@@ -49,7 +49,7 @@ const Sidebar = () => {
   );
 
   return (
-    <aside className="bg-gray-800 text-white w-64 min-h-screen p-4">
+    <aside className="bg-[#FFBFBC] text-white w-64 min-h-screen p-4">
       <nav className="space-y-2">
         {filteredMenuItems.map((item) => {
           const isActive = location.pathname === item.path;

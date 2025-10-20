@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const ServiceCard = ({ icon, title, description, price }) => (
-  <div className="bg-[#FFBFBC] p-6 rounded-xl shadow-lg hover:shadow-xl transition-all hover:scale-105 duration-300">
+  <div className="bg-[#EFE0DA] p-6 rounded-xl shadow-lg hover:shadow-xl transition-all hover:scale-105 duration-300">
     <div className="w-12 h-12 bg-[#FEF4F4] text-[#282828] rounded-lg flex items-center justify-center mb-4">
       {icon}
     </div>
