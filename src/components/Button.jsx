@@ -13,12 +13,12 @@ const Button = ({
   ...props
 }) => {
   const baseClasses =
-    'font-semibold rounded-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed';
+    'font-semibold rounded-lg hover:shadow-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed';
 
   const variantClasses = {
-    primary:
-      'bg-gradient-to-r from-pink-500 to-rose-500 text-white hover:shadow-lg',
-    secondary: 'bg-gray-100 text-gray-700 hover:bg-gray-200',
+    primary: 'bg-white text-black',
+    secondary:
+      'bg-transparent text-black border border-black hover:bg-white hover:border-white',
     outline:
       'border-2 border-pink-500 text-pink-500 hover:bg-pink-500 hover:text-white',
     danger: 'bg-red-500 text-white hover:bg-red-600 hover:shadow-lg',

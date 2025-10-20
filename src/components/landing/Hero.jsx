@@ -6,7 +6,7 @@ import useIntersectionObserver from '../../hooks/useIntersectionObserver';
 const Hero = () => {
   const [contentRef, isContentVisible] = useIntersectionObserver();
   return (
-    <section className="relative min-h-screen flex items-center pt-16 overflow-hidden bg-gradient-to-br from-primary-50 via-white to-secondary-50">
+    <section className="relative min-h-[90vh] max-h-[90vh] flex items-center pt-16 overflow-hidden bg-gradient-to-br from-primary-50 via-white to-secondary-50">
       {/* Elementos decorativos */}
       <div className="absolute top-[-10%] right-[-5%] w-96 h-96 bg-primary-200/30 rounded-full blur-3xl" />
       <div className="absolute bottom-[-10%] left-[-5%] w-[500px] h-[500px] bg-secondary-200/30 rounded-full blur-3xl" />
@@ -16,19 +16,19 @@ const Hero = () => {
           {/* Conteúdo */}
           <div
             ref={contentRef}
-            className={`text-center md:text-left ${
+            className={`text-center md:text-left relative z-10 ${
               isContentVisible ? 'animate-fade-in' : 'opacity-0'
             }`}
           >
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent">
-              Realce sua beleza natural
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-[#282828] bg-clip-text text-transparent">
+              Realce sua <br /> beleza natural
             </h1>
-            <p className="text-lg text-gray-600 mb-8 max-w-lg">
-              Descubra o poder da transformação em nosso salão. Oferecemos
-              serviços premium de beleza para realçar sua beleza única e
-              natural.
+            <p className="text-lg font-normal text-[#5F5F5F] mb-8">
+              Descubra o poder da transformação em <br /> nosso salão.
+              Oferecemos serviços <br /> premium de beleza para realçar sua
+              beleza <br /> única e natural.
             </p>
-            <div className="flex flex-col md:flex-row gap-4 justify-center md:justify-start">
+            <div className="flex flex-col lg:flex-row gap-4 justify-center md:justify-start">
               <Button
                 variant="primary"
                 size="large"
@@ -46,24 +46,19 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Imagem */}
-          <div className="relative">
-            <div className="aspect-square rounded-full overflow-hidden shadow-xl">
-              <img
-                src="public/hero.jpg"
-                alt="Mulher sorrindo após tratamento"
-                className="w-full h-full object-cover "
-              />
-            </div>
-            {/* Destaque flutuante */}
-            <div className="absolute bottom-4 right-4 bg-white/90 backdrop-blur-sm p-4 rounded-lg shadow-lg">
-              <p className="text-sm font-medium text-gray-800">
-                ⭐ 4.9/5 Avaliações
-              </p>
-              <p className="text-xs text-gray-600">
-                +1000 clientes satisfeitos
-              </p>
-            </div>
+          <div className="hidden md:block absolute right-0 top-0 z-0 w-full h-full">
+            <img
+              src="public/bg.png"
+              alt="Mulher sorrindo após tratamento"
+              className="w-full h-full object-cover"
+            />
+          </div>
+          <div className="md:hidden absolute left-0 top-0 z-0 w-full h-full">
+            <img
+              src="public/bg-mobile.png"
+              alt="Mulher sorrindo após tratamento"
+              className="w-full h-full object-cover"
+            />
           </div>
         </div>
       </div>

@@ -2,17 +2,18 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const ServiceCard = ({ icon, title, description, price }) => (
-  <div className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
-    <div className="w-12 h-12 bg-primary-100 text-primary-600 rounded-lg flex items-center justify-center mb-4">
+  <div className="bg-[#FFBFBC] p-6 rounded-xl shadow-lg hover:shadow-xl transition-all hover:scale-105 duration-300">
+    <div className="w-12 h-12 bg-[#FEF4F4] text-[#282828] rounded-lg flex items-center justify-center mb-4">
       {icon}
     </div>
-    <h3 className="text-xl font-semibold text-gray-800 mb-2">{title}</h3>
-    <p className="text-gray-600 mb-4">{description}</p>
-    <p className="text-primary-600 font-semibold">A partir de R$ {price}</p>
+    <h3 className="text-xl font-semibold text-[#282828] mb-2">{title}</h3>
+    <p className="text-[#5F5F5F] mb-4">{description}</p>
+    <p className="text-[#282828] font-semibold">A partir de R$ {price}</p>
   </div>
 );
 
 import useIntersectionObserver from '../../hooks/useIntersectionObserver';
+import Button from '../Button';
 
 const Services = () => {
   const [headerRef, isHeaderVisible] = useIntersectionObserver();
@@ -49,7 +50,7 @@ const Services = () => {
   ];
 
   return (
-    <section id="services" className="py-20 bg-gray-50">
+    <section id="services" className="py-20 bg-[#EFE0DA]/30">
       <div className="container mx-auto px-4">
         {/* Cabeçalho da seção */}
         <div
@@ -58,10 +59,10 @@ const Services = () => {
             isHeaderVisible ? 'animate-fade-in' : 'opacity-0'
           }`}
         >
-          <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent">
+          <h2 className="text-4xl font-bold mb-4 text-black">
             Nossos Serviços
           </h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
+          <p className="text-[#5F5F5F] max-w-2xl mx-auto">
             Oferecemos uma variedade de serviços de beleza para realçar sua
             beleza natural. Todos os tratamentos são realizados por
             profissionais experientes.
@@ -82,12 +83,9 @@ const Services = () => {
 
         {/* Call to action */}
         <div className="text-center mt-12">
-          <Link
-            to="#schedule"
-            className="inline-block px-8 py-3 bg-primary-600 text-white rounded-full hover:bg-primary-700 transition-colors"
-          >
-            Ver todos os serviços
-          </Link>
+          <Button variant="secondary">
+            <Link to="#schedule">Ver todos os serviços</Link>
+          </Button>
         </div>
       </div>
     </section>

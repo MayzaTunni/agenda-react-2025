@@ -39,7 +39,7 @@ const Gallery = () => {
   ];
 
   return (
-    <section id="gallery" className="py-20 bg-gray-50">
+    <section id="gallery" className="py-20 bg-[#EFE0DA]/30">
       <div className="container mx-auto px-4">
         {/* Cabeçalho da seção */}
         <div
@@ -48,10 +48,10 @@ const Gallery = () => {
             isHeaderVisible ? 'animate-fade-in' : 'opacity-0'
           }`}
         >
-          <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent">
+          <h2 className="text-4xl font-bold mb-4 text-[#282828]">
             Galeria de Transformações
           </h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
+          <p className="text-[#5F5F5F] max-w-2xl mx-auto">
             Confira alguns dos nossos trabalhos mais recentes e inspire-se para
             sua próxima transformação.
           </p>
@@ -76,10 +76,12 @@ const Gallery = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                  <p className="text-sm font-medium text-primary-200 mb-1">
+                  <p className="text-sm font-medium text-[#FFBFBC] mb-1">
                     {image.category}
                   </p>
-                  <h3 className="text-xl font-semibold">{image.title}</h3>
+                  <h3 className="text-xl font-semibold text-white">
+                    {image.title}
+                  </h3>
                 </div>
               </div>
             </div>
@@ -92,7 +94,7 @@ const Gallery = () => {
             href="https://instagram.com/cortestyleshine"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center space-x-2 text-gray-600 hover:text-primary-600 transition-colors"
+            className="inline-flex items-center space-x-2 text-[#5F5F5F] hover:text-[#282828] transition-colors"
           >
             <span>Siga-nos no Instagram</span>
             <span className="text-xl">📸</span>
